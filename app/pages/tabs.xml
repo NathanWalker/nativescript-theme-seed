@@ -1,0 +1,56 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:drawer="nativescript-telerik-ui/sidedrawer"
+  xmlns:sidedrawer="/sidedrawer"
+  xmlns:actionBar="/actionBar"
+  navigatingTo="navigatingTo">
+  <Page.actionBar>
+    <actionBar:actionBar ActionBarTitle="Tabs" ></actionBar:actionBar>
+  </Page.actionBar>
+  <drawer:RadSideDrawer id="sideDrawer" drawerLocation="Left">
+    <drawer:RadSideDrawer.mainContent android:showOverNavigation="false">
+ <TabView class="tab-view">
+ <!-- we want to set this via css: selectedColor="#30bcff" tabsBackgroundColor="#f9f9f9"-->
+   <TabView.items>
+    <!-- ITEMS -->
+     <TabViewItem title="One" class="tab-view-item">
+       <TabViewItem.view>
+          <StackLayout class="page p-20">
+            <Label text="Tab 1 Content" class="h1" />
+            <StackLayout>
+                <Label text="{{ tab1 }}" textWrap="true" class="body" />
+            </StackLayout>
+          </StackLayout>
+       </TabViewItem.view>
+     </TabViewItem>
+
+     <TabViewItem title="Two">
+      <TabViewItem.view>
+        <StackLayout class="page p-20">
+              <Label text="Tab 2 Content" class="h1" />
+              <StackLayout>
+                <Label text="{{ tab2 }}" textWrap="true" class="body" />
+            </StackLayout>
+          </StackLayout>
+        </TabViewItem.view>
+     </TabViewItem>
+
+      <TabViewItem title="Three">
+        <TabViewItem.view>
+          <StackLayout class="page p-20">
+            <Label text="Tab 3 Content" class="h1" />
+            <StackLayout>
+                <Label text="{{ tab3 }}" textWrap="true" class="body" />
+            </StackLayout>
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+
+      <!-- END ITEMS -->
+   </TabView.items>
+ </TabView>
+    </drawer:RadSideDrawer.mainContent>
+    <drawer:RadSideDrawer.drawerContent>
+        <sidedrawer:sidedrawer activeComponent='tabs'></sidedrawer:sidedrawer>
+    </drawer:RadSideDrawer.drawerContent>
+  </drawer:RadSideDrawer>
+</Page>

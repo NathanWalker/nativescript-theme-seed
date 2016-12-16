@@ -1,0 +1,13 @@
+*.css
+*.js
+*.map
+/hooks
+/platforms
+node_modules
+lib
+/nativescript-theme-yours
+!scripts/builder.js
+!scripts/postclone.js
+.vscode
+.idea
+.DS_Store

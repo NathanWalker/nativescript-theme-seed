@@ -1,0 +1,57 @@
+{
+  "name": "nativescript-theme-yours",
+  "version": "1.0.0",
+  "description": "Your awesome NativeScript theme.",
+  "nativescript": {
+    "id": "com.yourdomain.YourTheme",
+    "tns-ios": {
+      "version": "2.4.0"
+    }
+  },
+  "scripts": {
+    "builder": "node scripts/builder.js",
+    "postclone": "npm i && node scripts/postclone.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YourName/nativescript-theme-yours.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "Android",
+    "iOS",
+    "Theme"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "youremail@yourdomain.com"
+  },
+  "bugs": {
+    "url": "https://github.com/YourName/nativescript-theme-yours/issues"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/YourName/nativescript-theme-yours",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "nativescript-dom": "^1.0.8",
+    "nativescript-fonticon": "^1.1.0",
+    "nativescript-telerik-ui": "^1.5.1",
+    "nativescript-theme-core": "^1.0.2",
+    "nativescript-themes": "^1.1.0",
+    "tns-core-modules": "^2.4.3"
+  },
+  "devDependencies": {
+    "tns-platform-declarations": "^2.4.3",
+    "babel-traverse": "6.13.0",
+    "babel-types": "6.13.0",
+    "babylon": "6.9.0",
+    "glob": "^7.0.5",
+    "lazy": "1.0.11",
+    "nativescript-dev-sass": "^0.4.1",
+    "nativescript-dev-typescript": "^0.3.2",
+    "node-sass": "^3.10.1",
+    "sass-lint": "^1.10.2",
+    "typescript": "^2.0.6"
+  }
+}
