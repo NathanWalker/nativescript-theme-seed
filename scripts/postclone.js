@@ -7,8 +7,7 @@ var theme_name,
   class_name,
   github_username,
   seed_theme_name = "yours",
-  seed_class_name = "YourTheme",
-  seed_demo_property_name = "yourTheme",
+  seed_custom_name = "custom",
   seed_github_username = "YourName",
   init_git;
 
@@ -28,11 +27,11 @@ function askGithubUsername() {
             return console.log("Dude, the GitHub username is mandatory!");
         }
         github_username = result.github_username;
-        askPluginName();
+        askThemeName();
     });
 }
 
-function askPluginName() {
+function askThemeName() {
     prompt.get({
         name: 'theme_name',
         description: 'What will be the name of your theme? Use lowercase characters and dashes only. Example: nova / retro / total_recall'
@@ -44,30 +43,75 @@ function askPluginName() {
             return console.log("Dude, the theme name is mandatory!");
         }
         theme_name = result.theme_name;
-        generateClassName();
+        renameFiles();
     });
-}
-
-function generateClassName() {
-    // the classname becomes 'TotalRecall' when theme_name is 'total_recall'
-    class_name = "";
-    var plugin_name_parts = plugin_name.split("-");
-    for (var p in plugin_name_parts) {
-        var part = plugin_name_parts[p];
-        class_name += (part[0].toUpperCase() + part.substr(1));
-    }
-    console.log('Using ' + class_name + ' as the TypeScript Class name..');
-    renameFiles();
 }
 
 function renameFiles() {
     console.log('Will now rename some files..');
-    var files = fs.readdirSync(".");
+    var files = fs.readdirSync("app/");
     for (var f in files) {
       var file = files[f];
-      if (file.indexOf(seed_theme_name) === 0) {
+      if (file.indexOf(seed_theme_name) === 0 || file.indexOf('scss/_custom') > -1) {
           var newName = theme_name + file.substr(file.indexOf("."));
+          fs.renameSync('app/' + file, 'app/' + newName);
+      }
+    }
+    files = fs.readdirSync("app/scss/");
+    for (var f in files) {
+      var file = files[f];
+      if (file.indexOf('custom') > -1) {
+          var newName = 'app/scss/_' + theme_name + '.scss';
+          fs.renameSync('app/scss/' + file, newName);
+      }
+    }
+    files = fs.readdirSync(".");
+    for (var f in files) {
+      var file = files[f];
+      if (file.indexOf(seed_theme_name) > -1) {
+          var newName = 'nativescript-theme-' + theme_name + file.substr(file.indexOf("."));
           fs.renameSync(file, newName);
+      }
+    }
+
+    adjustFiles();
+}
+
+function adjustFiles() {
+    console.log('Adjusting files..');
+
+    // add all files in the root
+    var files = fs.readdirSync(".");
+
+    // add the demo files
+    var demoFiles = fs.readdirSync("app/");
+    for (var d in demoFiles) {
+        var demoFile = demoFiles[d];
+        if (demoFile.indexOf('app.ts') > -1 || demoFile.indexOf('main-page.ts') > -1 || demoFile.indexOf('ios.scss') > -1 || demoFile.indexOf('android.scss') > -1) {
+            files.push("app/" + demoFile);
+        }
+    }
+    var scriptFiles = fs.readdirSync("scripts/");
+    for (var d in scriptFiles) {
+        var demoFile = scriptFiles[d];
+        if (demoFile.indexOf('builder.js') > -1) {
+            files.push("scripts/" + demoFile);
+        }   
+    }
+
+    // prepare and cache a few Regexp thingies
+    var regexp_seed_theme_name = new RegExp(seed_theme_name, "g");
+    var regexp_seed_custom_import = new RegExp(seed_custom_name, "g");
+    var regexp_seed_github_username = new RegExp(seed_github_username, "g");
+
+    for (var f in files) {
+      var file = files[f];
+      if (file.indexOf(".") > 0) {
+        var contents = fs.readFileSync(file, 'utf8');
+        var result = contents.replace(regexp_seed_theme_name, theme_name);
+        result = result.replace(regexp_seed_custom_import, theme_name); 
+        result = result.replace(regexp_seed_github_username, github_username);
+        fs.writeFileSync(file, result);
       }
     }
 

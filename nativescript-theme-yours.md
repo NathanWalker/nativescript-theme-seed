@@ -1,4 +1,4 @@
-# NativeScript Theme: Yours
+# NativeScript Theme: yours
 
 Your custom theme description.
 

@@ -3,7 +3,7 @@
 ## Getting started
 
 1. `git clone https://github.com/NathanWalker/nativescript-theme-seed.git nativescript-theme-`[your-custom-name-here]
-3. `cd nativescript-theme-your-custom-name-here]`
+3. `cd nativescript-theme-[your-custom-name-here]`
 4. `npm run postclone`
 5. Get to work.
 
