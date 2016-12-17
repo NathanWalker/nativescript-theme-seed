@@ -21,9 +21,7 @@ Additionally it provides a proper `.gitignore` to keep GitHub tidy as well as `.
 
 ## Publishing
 
-*NOTE*: Only authorized authors can publish updates.
-
-**IMPORTANT**: Always make sure you have run the demo app in iOS or Android to verify any changes as well as ensure the latest `css` has been built before doing the following:
+**IMPORTANT**: Always make sure you have run the app in iOS or Android to verify any changes as well as ensure the latest `css` has been built before doing the following:
 
 * Bump version in `nativescript-theme-[your-custom-name-here].json`
 * Adjust `nativescript-theme-[your-custom-name-here].md` if any changes to the published `README` are needed.
