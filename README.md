@@ -9,7 +9,7 @@
 
 ## Usage
 
-The seed is prepared to allow you to test and try out your plugin via the integrated app setup which is all set with several component pages you can test your custom theme against.
+The seed is prepared to allow you to test and try out your theme via the integrated app setup which is all set with several component pages you can test your custom theme against.
 Additionally it provides a proper `.gitignore` to keep GitHub tidy as well as `.npmignore` to ensure everyone is happy when you publish your theme via npm.
 
 ### Typical development workflow:
