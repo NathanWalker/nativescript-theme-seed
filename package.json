@@ -50,7 +50,7 @@
     "lazy": "1.0.11",
     "nativescript-dev-sass": "^0.4.1",
     "nativescript-dev-typescript": "^0.3.2",
-    "node-sass": "^3.10.1",
+    "node-sass": "^4.14.1",
     "prompt": "^1.0.0",
     "rimraf": "^2.5.0",
     "sass-lint": "^1.10.2",
